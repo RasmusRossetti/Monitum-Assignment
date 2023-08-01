@@ -19,12 +19,7 @@ const App: React.FC = () => {
   ])
 
   // State for portfolio data
-  const [portfolioData, setPortfolioData] = useState<PortfolioItem[]>([
-    {
-      companyName: "string",
-      symbol: "string"
-    }
-  ])
+  const [portfolioData, setPortfolioData] = useState<PortfolioItem[]>([])
 
   return (
     <PortfolioContext.Provider value={{ portfolioData, setPortfolioData }}>
