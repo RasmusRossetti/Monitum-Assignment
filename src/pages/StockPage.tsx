@@ -23,7 +23,7 @@ const Description = styled.p`
 `
 
 export const StockPage: React.FC = () => {
-  const apiKey = "SUZBSRIA85J6LLS0"
+  const apiKey = import.meta.env.VITE_API_KEY
   const currentUrl = window.location.href
   const symbol = currentUrl.split("/stock/")[1]
   const searchUrl = `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${symbol}&apikey=${apiKey}`

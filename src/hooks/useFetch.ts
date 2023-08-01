@@ -4,7 +4,7 @@ export const useFetch = <T>(url: string) => {
   const [data, setData] = useState<T | null>(null)
   const [loading, setLoading] = useState(false)
 
-  const fetchData = async () => {
+  const fetchData = async (): Promise<void> => {
     try {
       setLoading(true)
       const response = await fetch(url)

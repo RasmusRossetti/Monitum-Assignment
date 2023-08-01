@@ -97,7 +97,7 @@ const AddButton = styled.button`
 `
 
 const Main: React.FC = () => {
-  const apiKey = "SUZBSRIA85J6LLS0"
+  const apiKey = import.meta.env.VITE_API_KEY
   const [searchKeyword, setSearchKeyword] = useState("")
   const searchUrl = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${searchKeyword}&apikey=${apiKey}`
 
