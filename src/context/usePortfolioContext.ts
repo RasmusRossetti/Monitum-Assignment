@@ -1,9 +1,5 @@
 import { createContext, useContext } from "react"
-
-interface PortfolioItem {
-  companyName: string
-  symbol: string
-}
+import { PortfolioItem } from "../models/dataModel"
 
 interface PortfolioContextValue {
   portfolioData: PortfolioItem[]

@@ -14,3 +14,7 @@ export interface StockModel {
   Name: string
   Description: string
 }
+export interface PortfolioItem {
+  companyName: string
+  symbol: string
+}

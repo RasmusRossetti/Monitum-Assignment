@@ -4,8 +4,7 @@ import Main from "./pages/Main"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import { StockPage } from "./pages/StockPage"
 import { PortfolioContext } from "./context/usePortfolioContext"
-
-// ... (Rest of the code)
+import { PortfolioItem } from "./models/dataModel"
 
 const App: React.FC = () => {
   const router = createBrowserRouter([
@@ -20,9 +19,12 @@ const App: React.FC = () => {
   ])
 
   // State for portfolio data
-  const [portfolioData, setPortfolioData] = useState<
-    { companyName: string; symbol: string }[]
-  >([])
+  const [portfolioData, setPortfolioData] = useState<PortfolioItem[]>([
+    {
+      companyName: "string",
+      symbol: "string"
+    }
+  ])
 
   return (
     <PortfolioContext.Provider value={{ portfolioData, setPortfolioData }}>
