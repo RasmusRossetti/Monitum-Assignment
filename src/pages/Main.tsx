@@ -101,6 +101,10 @@ const Main: React.FC = () => {
   const [searchKeyword, setSearchKeyword] = useState("")
   const searchUrl = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${searchKeyword}&apikey=${apiKey}`
 
+  //Fetch hook
+  const { data, loading, fetchData } = useFetch<SearchResult>(searchUrl)
+  console.log(data)
+  //Context state
   const { portfolioData, setPortfolioData } = usePortfolioContext()
 
   const handleSearchClick: () => void = () => {
@@ -124,9 +128,6 @@ const Main: React.FC = () => {
       return newData
     })
   }
-
-  const { data, loading, fetchData } = useFetch<SearchResult>(searchUrl)
-  console.log(data)
 
   return (
     <Container>
