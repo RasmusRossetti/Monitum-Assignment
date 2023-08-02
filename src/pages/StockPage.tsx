@@ -22,6 +22,22 @@ const Description = styled.p`
   font-size: 16px;
 `
 
+const Button = styled.button`
+  font-size: 20px;
+  padding: 15px 35px 15px 35px;
+  cursor: pointer;
+  border: 1.5px solid;
+
+  border-color: #ccc;
+  color: #333;
+
+  &:hover {
+    background-color: #c0c0c0;
+    border-color: #999;
+    color: #222;
+  }
+`
+
 export const StockPage: React.FC = () => {
   const apiKey = import.meta.env.VITE_API_KEY
   const currentUrl = window.location.href
@@ -30,6 +46,10 @@ export const StockPage: React.FC = () => {
 
   const { data, loading, fetchData } = useFetch<StockModel>(searchUrl)
   console.log(data)
+
+  const handleGoBack = (): void => {
+    window.history.back()
+  }
 
   useEffect(() => {
     fetchData()
@@ -41,6 +61,7 @@ export const StockPage: React.FC = () => {
 
   return (
     <Container>
+      <Button onClick={handleGoBack}>Go back</Button>
       <Title>{data?.Name}</Title>
       <SubTitle>{data?.Address}</SubTitle>
       <SubTitle>{data?.MarketCapitalization}</SubTitle>

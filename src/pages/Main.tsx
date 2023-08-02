@@ -8,6 +8,7 @@ import { usePortfolioContext } from "../context/usePortfolioContext"
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-top: 10px;
 `
 
 const LeftSection = styled.div`
@@ -18,6 +19,7 @@ const LeftSection = styled.div`
 const RightSection = styled.div`
   width: 50%;
   padding: 20px;
+  border-left: 1.5px solid #a1a1a1;
 `
 
 const Title = styled.h2`
@@ -47,21 +49,6 @@ const SearchResultBox = styled.div`
   min-height: 200px;
 `
 
-const Table = styled.table`
-  width: 100%;
-  border-collapse: collapse;
-  text-align: center;
-
-  th,
-  td {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-
-  th {
-    background-color: #f2f2f2;
-  }
-`
 const FlexContainer = styled.div`
   display: flex;
   align-items: center;

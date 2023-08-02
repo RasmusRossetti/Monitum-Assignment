@@ -17,6 +17,17 @@ const StyledTable = styled.table`
     background-color: #f2f2f2;
   }
 `
+const Button = styled.button`
+  border: none;
+  cursor: pointer;
+  color: #333;
+  width: 60%;
+  &:hover {
+    background-color: #c0c0c0;
+    border-color: #999;
+    color: #222;
+  }
+`
 
 interface TableProps {
   portfolioData: { companyName: string; symbol: string }[]
@@ -45,9 +56,9 @@ const TableComponent: React.FC<TableProps> = ({
             <td>{item.symbol}</td>
 
             <td>
-              <button onClick={() => handleDeleteButtonClick(index)}>
+              <Button onClick={() => handleDeleteButtonClick(index)}>
                 Remove
-              </button>
+              </Button>
             </td>
           </tr>
         ))}
