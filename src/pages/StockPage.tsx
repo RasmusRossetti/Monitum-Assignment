@@ -27,13 +27,13 @@ export const StockPage: React.FC = () => {
   const currentUrl = window.location.href
   const symbol = currentUrl.split("/stock/")[1]
   const searchUrl = `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${symbol}&apikey=${apiKey}`
-  console.log(symbol)
+
+  const { data, loading, fetchData } = useFetch<StockModel>(searchUrl)
+  console.log(data)
 
   useEffect(() => {
     fetchData()
   }, [searchUrl])
-
-  const { data, loading, fetchData } = useFetch<StockModel>(searchUrl)
 
   if (loading) {
     return <div>Loading...</div>
