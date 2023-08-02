@@ -28,10 +28,10 @@ const Title = styled.h2`
 `
 
 const Input = styled.input`
-  width: 80%;
+  width: 60%;
   padding: 8px;
   margin-bottom: 10px;
-  border-radius: 4px;
+  border-radius: 15px;
 `
 
 const SearchButton = styled.button`
@@ -39,6 +39,7 @@ const SearchButton = styled.button`
   background-color: #007bff;
   color: #fff;
   border: none;
+  border-radius: 15px;
   cursor: pointer;
   margin: 10px 0px 10px 10px;
 `
