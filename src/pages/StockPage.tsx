@@ -2,6 +2,7 @@ import { styled } from "styled-components"
 import { useFetch } from "../hooks/useFetch"
 import { useEffect } from "react"
 import { StockModel } from "../models/dataModel"
+import { Link } from "react-router-dom"
 
 const Container = styled.div`
   width: 90%;
@@ -10,6 +11,7 @@ const Container = styled.div`
 
 const Title = styled.h1`
   font-size: 38px;
+  margin-top: 60px;
   margin-bottom: 10px;
 `
 
@@ -22,7 +24,7 @@ const Description = styled.p`
   font-size: 16px;
 `
 
-const Button = styled.button`
+const Button = styled(Link)`
   font-size: 20px;
   padding: 15px 35px 15px 35px;
   cursor: pointer;
@@ -30,6 +32,24 @@ const Button = styled.button`
   margin-bottom: 30px;
   border-color: #ccc;
   color: #333;
+
+  &:hover {
+    background-color: #c0c0c0;
+    border-color: #999;
+    color: #222;
+  }
+`
+const StyledLink = styled(Link)`
+  font-size: 20px;
+  padding: 15px 35px 15px 35px;
+  cursor: pointer;
+  border: 1.5px solid;
+  margin-bottom: 30px;
+  border-color: #ccc;
+  color: #333;
+  text-decoration: none;
+  position: relative;
+  top: 30px;
 
   &:hover {
     background-color: #c0c0c0;
@@ -47,10 +67,6 @@ export const StockPage: React.FC = () => {
   const { data, loading, fetchData } = useFetch<StockModel>(searchUrl)
   console.log(data)
 
-  const handleGoBack = (): void => {
-    window.history.back()
-  }
-
   useEffect(() => {
     fetchData()
   }, [symbol])
@@ -61,7 +77,7 @@ export const StockPage: React.FC = () => {
 
   return (
     <Container>
-      <Button onClick={handleGoBack}>Go back</Button>
+      <StyledLink to={`/`}>Go back</StyledLink>
       <Title>{data?.Name}</Title>
       <SubTitle>{data?.Address}</SubTitle>
       <SubTitle>{data?.MarketCapitalization}</SubTitle>
