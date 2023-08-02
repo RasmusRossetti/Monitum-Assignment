@@ -4,7 +4,7 @@ import { useEffect } from "react"
 import { StockModel } from "../models/dataModel"
 
 const Container = styled.div`
-  width: 80%;
+  width: 90%;
   margin: 20px auto;
 `
 
@@ -27,7 +27,7 @@ const Button = styled.button`
   padding: 15px 35px 15px 35px;
   cursor: pointer;
   border: 1.5px solid;
-
+  margin-bottom: 30px;
   border-color: #ccc;
   color: #333;
 
