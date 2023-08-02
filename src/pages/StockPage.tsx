@@ -53,7 +53,7 @@ export const StockPage: React.FC = () => {
 
   useEffect(() => {
     fetchData()
-  }, [searchUrl])
+  }, [symbol])
 
   if (loading) {
     return <div>Loading...</div>
