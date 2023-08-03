@@ -12,6 +12,7 @@ export interface StockModel {
   MarketCapitalization: string
   Name: string
   Description: string
+  Note?: string
 }
 export interface PortfolioItem {
   companyName: string
