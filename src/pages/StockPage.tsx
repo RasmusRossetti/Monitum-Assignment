@@ -61,18 +61,6 @@ export const StockPage: React.FC = () => {
   const symbol = currentUrl.split("/stock/")[1]
   const searchUrl = `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${symbol}&apikey=${apiKey}`
 
-  const isAPICallLimitExceeded = (data: StockModel | null): boolean => {
-    return (
-      !!data &&
-      !!data.Note &&
-      data.Note.includes("Thank you for using Alpha Vantage!")
-    )
-  }
-
-  const isDataEmpty = (data: StockModel | null): boolean => {
-    return data === null || Object.keys(data).length === 0
-  }
-
   const { data, loading, fetchData } = useFetch<StockModel>(searchUrl)
   console.log(data)
 
@@ -84,36 +72,42 @@ export const StockPage: React.FC = () => {
     return <div>Loading...</div>
   }
 
-  const apiLimitExceeded = isAPICallLimitExceeded(data)
-  const dataIsEmpty = isDataEmpty(data)
+  if (
+    data &&
+    data.Note &&
+    data.Note.includes("Thank you for using Alpha Vantage!")
+  ) {
+    return (
+      <Container>
+        <StyledLink to={`/`}>Go back</StyledLink>
+        <LimitExceededMessage>
+          Thank you for using Alpha Vantage! Our standard API call frequency is
+          5 calls per minute and 100 calls per day. Please visit{" "}
+          <a href="https://www.alphavantage.co/premium/">
+            Alpha Vantage Premium
+          </a>{" "}
+          if you would like to target a higher API call frequency.
+        </LimitExceededMessage>
+      </Container>
+    )
+  }
+
+  if (!data || Object.keys(data).length === 0) {
+    return (
+      <Container>
+        <StyledLink to={`/`}>Go back</StyledLink>
+        <ErrorMessage>Error: Data not found.</ErrorMessage>
+      </Container>
+    )
+  }
+
   return (
     <Container>
-      {apiLimitExceeded ? (
-        <>
-          <StyledLink to={`/`}>Go back</StyledLink>
-          <LimitExceededMessage>
-            Thank you for using Alpha Vantage! Our standard API call frequency
-            is 5 calls per minute and 100 calls per day. Please visit{" "}
-            <a href="https://www.alphavantage.co/premium/">
-              Alpha Vantage Premium
-            </a>{" "}
-            if you would like to target a higher API call frequency.
-          </LimitExceededMessage>
-        </>
-      ) : dataIsEmpty ? (
-        <>
-          <StyledLink to={`/`}>Go back</StyledLink>
-          <ErrorMessage>Error: Data not found.</ErrorMessage>
-        </>
-      ) : (
-        <>
-          <StyledLink to={`/`}>Go back</StyledLink>
-          <Title>{data?.Name}</Title>
-          <SubTitle>{data?.Address}</SubTitle>
-          <SubTitle>{data?.MarketCapitalization}</SubTitle>
-          <Description>{data?.Description}</Description>
-        </>
-      )}
+      <StyledLink to={`/`}>Go back</StyledLink>
+      <Title>{data?.Name}</Title>
+      <SubTitle>{data?.Address}</SubTitle>
+      <SubTitle>{data?.MarketCapitalization}</SubTitle>
+      <Description>{data?.Description}</Description>
     </Container>
   )
 }
