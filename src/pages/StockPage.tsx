@@ -80,14 +80,7 @@ export const StockPage: React.FC = () => {
     return (
       <Container>
         <StyledLink to={`/`}>Go back</StyledLink>
-        <LimitExceededMessage>
-          Thank you for using Alpha Vantage! Our standard API call frequency is
-          5 calls per minute and 100 calls per day. Please visit{" "}
-          <a href="https://www.alphavantage.co/premium/">
-            Alpha Vantage Premium
-          </a>{" "}
-          if you would like to target a higher API call frequency.
-        </LimitExceededMessage>
+        <LimitExceededMessage>{data.Note}</LimitExceededMessage>
       </Container>
     )
   }
