@@ -85,7 +85,7 @@ export const StockPage: React.FC = () => {
     )
   }
 
-  if (!data || Object.keys(data).length === 0) {
+  if (!data || Object.keys(data).length === 0 || undefined) {
     return (
       <Container>
         <StyledLink to={`/`}>Go back</StyledLink>
